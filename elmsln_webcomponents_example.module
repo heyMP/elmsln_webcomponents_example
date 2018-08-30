@@ -3,15 +3,14 @@
 /**
  * Implements hook_page_build().
  */
-function eberly_webcomponents_page_build() {
-  // add some components to our eberly builds
+function elmsln_webcomponents_example_page_build() {
   // make sure we are not on the edit page.
   if (arg(0) == 'node' && arg(2) == 'edit') {
     // don't do anything
   }
   else {
-    // load the elements that you have specified in _eberly_webcomponents_custom_elements
-    $elements = _eberly_webcomponents_custom_elements();
+    // load the elements that you have specified in _elmsln_webcomponents_example_custom_elements
+    $elements = _elmsln_webcomponents_example_custom_elements();
     foreach ($elements as $element) {
       // use the webcomponents module to add the element to the HEAD.  Increase the weight
       // so that they are added after the core elements.
@@ -20,7 +19,7 @@ function eberly_webcomponents_page_build() {
   }
 }
 
-function _eberly_webcomponents_custom_elements() {
+function _elmsln_webcomponents_example_custom_elements() {
   $elements = array();
 
   $libraries = libraries_get_libraries();
