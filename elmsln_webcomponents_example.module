@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * Implements hook_page_build().
+ */
+function eberly_webcomponents_page_build() {
+  // add some components to our eberly builds
+  // make sure we are not on the edit page.
+  if (arg(0) == 'node' && arg(2) == 'edit') {
+    // don't do anything
+  }
+  else {
+    // load the elements that you have specified in _eberly_webcomponents_custom_elements
+    $elements = _eberly_webcomponents_custom_elements();
+    foreach ($elements as $element) {
+      // use the webcomponents module to add the element to the HEAD.  Increase the weight
+      // so that they are added after the core elements.
+      _webcomponents_add_to_head($element, 1000);
+    }
+  }
+}
+
+function _eberly_webcomponents_custom_elements() {
+  $elements = array();
+
+  $libraries = libraries_get_libraries();
+
+  // add the components
+  $cool_button = new stdClass();
+  $cool_button->machine_name = 'cool-button';
+  $cool_button->file = $libraries['webcomponents'] . '/polymer/bower_components/cool-button/cool-button.html';
+  $elements[] = $cool_button;
+
+  return $elements;
+}

@@ -1,0 +1,3 @@
+name = ELMSLN Web Components Example
+description = An example method for adding custom web components in ELMSLN
+core = 7.x
